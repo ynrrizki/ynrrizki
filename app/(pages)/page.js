@@ -25,10 +25,10 @@ export default function Home() {
           {/* Content */}
           <div className="max-w-6xl pb-12 md:pb-20">
             <h1 className='text-3xl md:text-7xl text-start md:text-start font-black text-[#050505]'>
-              Hello, Aku Yanuar 👋. <br className="block" />{" "}<span className="underline" ref={el}>{" "}</span>
+              Hello, Aku Yanuar 👋 <br className="block" />{" "}<span className="underline" ref={el}>{" "}</span>
             </h1>
             <p className='text-sm md:text-4xl mt-10 text-gray-600'>
-              Menampilkan keterampilan teknis yang mengesankan dalam pengembangan web dan seluler, mengubah potensi pribadi menjadi solusi digital yang menakjubkan.
+              Menampilkan keterampilan teknis yang mengesankan dalam pengembangan web dan mobile, mengubah potensi pribadi menjadi solusi digital yang dapat bermanfaat.
             </p>
           </div>
           {/* Image */}

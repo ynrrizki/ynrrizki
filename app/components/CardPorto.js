@@ -33,7 +33,7 @@ export const CardPorto = (props) => {
                 ></span>
                 <Image
                     alt={props.name}
-                    src={props.image_url}
+                    src={props.image_url ?? '/no_image.png'}
                     decoding="async"
                     data-nimg="responsive"
                     className="rounded-md"
@@ -56,7 +56,7 @@ export const CardPorto = (props) => {
                         objectFit: "contain",
                     }}
                     sizes="100vw"
-                    srcSet={props.image_url}
+                    srcSet={props.image_url ?? '/no_image.png'}
                 />
             </span>
             <div className="p-3">

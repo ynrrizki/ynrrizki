@@ -32,7 +32,7 @@ export default function About() {
                             </ol>
                             <p>
                                 Saya juga sedang menjalankan pendidikan Sarjana Teknologi Informasi di
-                                Universitas Bina Sarana Informatika. Untuk pengalaman saat ini, saya hanya freelance dari awal lulus sekolah tingkat SMK sampai saat
+                                Universitas Bina Sarana Informatika. Untuk pengalaman saat ini, saya hanya freelance dari sebelum lulus sekolah tingkat SMK sampai saat
                                 ini. Saya juga suka mengeksplorasi hal-hal yang baru khusunya di
                                 bidang frontend developer karena saya memiliki ketertarikan di
                                 bidang App Design.
