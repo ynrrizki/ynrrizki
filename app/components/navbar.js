@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useEffect, useCallback } from "react";
-import NavItem from "./NavItem";
-import NavMobile from "./NavMobile";
-import { useRouter } from 'next/router'
+import NavItem from "./NavItem.js";
+import NavMobile from "./NavMobile.js";
+import { useRouter } from 'next/router';
 import Router from 'next/router';
 
 export default function Navbar() {

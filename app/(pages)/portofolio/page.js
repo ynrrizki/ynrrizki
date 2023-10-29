@@ -1,14 +1,10 @@
 'use client'
+import { CardPorto } from "@/app/components/CardPorto";
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
-import React, { useEffect, useState, use, Suspense } from "react";
-import { getPortofolio } from "./getPortofolio";
+import React, { useState, Suspense } from "react";
 
 export default function Portofolio() {
-  const origin =
-    typeof window !== 'undefined' && window.location.origin
-      ? window.location.origin
-      : '';
 
   const [selectedCategory, setSelectedCategory] = useState("all");
   // const portofolios = use(getPortofolio(origin));
@@ -49,82 +45,17 @@ export default function Portofolio() {
   const portoElements = [];
   for (const portoElement of portofolios.data) {
     if (selectedCategory === "all" || portoElement.category === selectedCategory) {
-      const element = (
-        <div className="border-2 rounded-md cursor-pointer border-gray-400 border-dotted">
-          <a className="relative h-10">
-            <span
-              style={{
-                boxSizing: "border-box",
-                display: "block",
-                overflow: "hidden",
-                width: "initial",
-                height: "initial",
-                background: "none",
-                opacity: "1",
-                border: "0px",
-                margin: "0px",
-                padding: "0px",
-                position: "relative",
-              }}
-            >
-              <span
-                style={{
-                  boxSizing: "border-box",
-                  display: "block",
-                  width: "initial",
-                  height: "initial",
-                  background: "none",
-                  opacity: "1",
-                  border: "0px",
-                  margin: "0px",
-                  padding: "75% 0px 0px",
-                }}
-              ></span>
-              <img
-                alt={portoElement.name}
-                src={portoElement.image_url}
-                decoding="async"
-                data-nimg="responsive"
-                className="rounded-md"
-                style={{
-                  position: "absolute",
-                  inset: "0px",
-                  boxSizing: "border-box",
-                  padding: "0px",
-                  border: "none",
-                  margin: "auto",
-                  display: "block",
-                  width: "0px",
-                  height: "0px",
-                  minWidth: "100%",
-                  maxWidth: "100%",
-                  minHeight: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                }}
-                sizes="100vw"
-                srcSet={portoElement.image_url}
-              />
-            </span>
-            <div className="p-3">
-              <h5 className="font-semibold xl:text-base xl:mb-2 text-sm ">
-                {portoElement.name}
-              </h5>
-              <span className="text-gray-400 font-medium xl:text-sm text-xs">
-                {portoElement.category}
-              </span>
-            </div>
-          </a>
-        </div>
-      );
+
+      const element = CardPorto({
+        name: portoElement.name,
+        image_url: portoElement.image_url,
+        category: portoElement.category,
+      });
 
       portoElements.push(element);
     }
   }
 
-  // for (let index = 0; index < 7; index++) {
-  //   portoElements.push(element);
-  // }
   return (
     <main className="container mx-auto">
       <div className="p-5 md:p-24">

@@ -1,12 +1,6 @@
-import Navbar from './components/navbar'
-import './globals.css'
-import NextTopLoader from 'nextjs-toploader'
-// import { Poppins } from 'next/font/google'
-
-// const poppins = Poppins({
-//   weight: ['400', '700'],
-//   subsets: ['latin'],
-// })
+import Navbar from '../components/Navbar';
+import '../globals.css';
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
   title: 'Yanuar Rizki Sanjaya @Portofolio',
@@ -16,7 +10,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <body className={poppins.className}>{children}</body> */}
       <body className='font-sans text-[#050505]'>
         <NextTopLoader
           color='#050505'
