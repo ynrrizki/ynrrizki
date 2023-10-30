@@ -5,6 +5,7 @@ export async function GET() {
         const data = [
             {
                 name: "Tracer Study (volunteer)",
+                image_url: "https://ucarecdn.com/8794857e-280d-4bca-bbfc-e44009f4984a/tracer-study.png",
                 category: "Web Application"
             },
             {
