@@ -1,4 +1,3 @@
-'use client'
 import { Fragment, useState, useEffect, useCallback } from "react";
 import NavItem from "./NavItem.js";
 import NavMobile from "./NavMobile.js";
