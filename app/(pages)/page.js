@@ -30,6 +30,16 @@ export default function Home() {
             <p className='text-sm md:text-4xl mt-10 text-[#050505]'>
               Memiliki keterampilan teknis yang kompeten dan mengesankan dalam pengembangan web dan mobile, mengubah potensi pribadi menjadi solusi digital yang dapat bermanfaat.
             </p>
+            <div className="mt-6 flex gap-2 md:gap-5">
+              <a href="/about" className="text-sm md:text-2xl bg-[#050505] hover:bg-[#050505]/70 text-white font-semibold  py-2 px-5 rounded-lg flex items-center">
+                Explore
+              </a>
+              <a href="https://drive.google.com/file/d/1StKtWylpI-wevK3E49AlE5uc8wU6Rx8Y/view?usp=sharing"
+                className="text-sm md:text-2xl border-solid border border-[#050505] text-[#050505] hover:bg-[#050505]/20 font-semibold  py-2 px-5 rounded-lg flex items-center"
+                target="_blank">
+                CV
+              </a>
+            </div>
           </div>
           {/* Image */}
           <div className="max-w-6xl mx-auto">

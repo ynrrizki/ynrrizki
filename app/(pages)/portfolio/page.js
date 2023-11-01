@@ -48,12 +48,12 @@ export default function Portfolios() {
   }, []);
 
   const renderPortfolio = () => {
-    return portfolios.map(portofolio => {
-      if (selectedCategory == 'all' || portofolio.category === selectedCategory)
+    return portfolios.map(portfolio => {
+      if (selectedCategory == 'all' || portfolio.category === selectedCategory)
         return CardPorto({
-          name: portofolio.name,
-          image_url: portofolio.image_url,
-          category: portofolio.category,
+          name: portfolio.name,
+          image_url: portfolio.image_url,
+          category: portfolio.category,
         });
     });
   }
