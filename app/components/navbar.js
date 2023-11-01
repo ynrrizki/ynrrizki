@@ -1,6 +1,5 @@
 'use client'
 import { Fragment, useState, useEffect, useCallback, createRef } from "react";
-import ReactDOM from 'react-dom'; // Add this line
 import NavItem from "./NavItem.js";
 import NavMobile from "./NavMobile.js";
 import Router from 'next/router';
