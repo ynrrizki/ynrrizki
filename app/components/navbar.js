@@ -1,29 +1,10 @@
-'use client'
-import { Fragment, useState, useEffect, useCallback, createRef } from "react";
+import { Fragment, useState, useEffect, useCallback } from "react";
 import NavItem from "./NavItem.js";
 import NavMobile from "./NavMobile.js";
 import Router from 'next/router';
 import { Menu, Dialog, Transition } from "@headlessui/react";
 import Link from "next/link.js";
 import { BiLogoGithub, BiLogoLinkedin, BiLogoWhatsapp, BiPaperPlane } from 'react-icons/bi';
-
-function useOutsideClick(ref, callback) {
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target)) {
-                callback();
-            }
-        }
-
-        // Bind the event listener
-        document.addEventListener('mousedown', handleClickOutside);
-
-        return () => {
-            // Unbind the event listener on cleanup
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [ref, callback]);
-}
 
 export default function Navbar() {
     const menus = [
@@ -37,7 +18,6 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenDialog, setIsOpenDialog] = useState(false);
     Router.events.on("routeChangeStart", () => setIsOpen(false));
-    const navRef = createRef(); // Add this line
 
     const handleNavigation = useCallback(
         e => {
@@ -67,11 +47,6 @@ export default function Navbar() {
             window.removeEventListener("scroll", handleNavigation);
         };
     }, [handleNavigation]);
-
-    useOutsideClick(navRef, () => {
-        // Close the menu when a click occurs outside the Navbar
-        setIsOpen(false);
-    });
 
     return (
         <>
