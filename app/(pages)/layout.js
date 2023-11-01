@@ -1,5 +1,5 @@
 // 'use client'
-import ThemeLayot from '@/app/components/ThemeLayout';
+import ThemeLayout from '@/app/components/ThemeLayout';
 import '../globals.css';
 import NextTopLoader from 'nextjs-toploader';
 
