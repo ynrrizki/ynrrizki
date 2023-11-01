@@ -1,10 +1,9 @@
 'use client'
-import Navbar from "./Navbar"
 
 export default function ThemeLayout({ children }) {
     return (
         <>
-            <Navbar />
+            <h1>Hello World</h1>
             {children}
         </>
     )
