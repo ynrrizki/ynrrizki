@@ -1,5 +1,5 @@
 import Navbar from '@/app/components/Navbar';
-import './globals.css';
+import '../globals.css';
 import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
