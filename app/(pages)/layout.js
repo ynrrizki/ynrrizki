@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 // import Navbar from '@/app/components/Navbar.js';
 import '../globals.css';
 import NextTopLoader from 'nextjs-toploader';
