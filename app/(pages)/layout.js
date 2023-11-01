@@ -1,9 +1,9 @@
-import Navbar from '../components/Navbar';
+import Navbar from '@/app/components/Navbar';
 import '../globals.css';
 import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
-  title: 'Yanuar Rizki Sanjaya @Portofolio',
+  title: 'Yanuar Rizki Sanjaya @Portfolio',
   description: 'Web Development | Mobile Development',
 }
 

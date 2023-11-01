@@ -1,18 +1,44 @@
 'use client'
-import { Fragment, useState, useEffect, useCallback } from "react";
+import { Fragment, useState, useEffect, useCallback, createRef } from "react";
+import ReactDOM from 'react-dom'; // Add this line
 import NavItem from "./NavItem.js";
 import NavMobile from "./NavMobile.js";
 import Router from 'next/router';
-import { Dialog, Transition } from "@headlessui/react";
+import { Menu, Dialog, Transition } from "@headlessui/react";
 import Link from "next/link.js";
-import { BiLogoGithub, BiLogoLinkedin, BiLogoWhatsapp } from 'react-icons/bi';
+import { BiLogoGithub, BiLogoLinkedin, BiLogoWhatsapp, BiPaperPlane } from 'react-icons/bi';
+
+function useOutsideClick(ref, callback) {
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                callback();
+            }
+        }
+
+        // Bind the event listener
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            // Unbind the event listener on cleanup
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [ref, callback]);
+}
 
 export default function Navbar() {
+    const menus = [
+        { name: 'Whatsapp', icon: BiLogoWhatsapp, link: 'https://wa.link/d3tx4k' },
+        { name: 'Linkedin', icon: BiLogoLinkedin, link: 'https://linkedin.com/in/ynrrizki' },
+        { name: 'Github', icon: BiLogoGithub, link: 'https://github.com/ynrrizki' },
+    ]
+
     const [y, setY] = useState(0);
-    const [border, setBorder] = useState('')
-    const [isOpen, setIsOpen] = useState(false)
-    const [isOpenDialog, setIsOpenDialog] = useState(false)
-    Router.events.on("routeChangeStart", () => setIsOpen(false))
+    const [border, setBorder] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
+    const [isOpenDialog, setIsOpenDialog] = useState(false);
+    Router.events.on("routeChangeStart", () => setIsOpen(false));
+    const navRef = createRef(); // Add this line
 
     const handleNavigation = useCallback(
         e => {
@@ -43,10 +69,15 @@ export default function Navbar() {
         };
     }, [handleNavigation]);
 
+    useOutsideClick(navRef, () => {
+        // Close the menu when a click occurs outside the Navbar
+        setIsOpen(false);
+    });
+
     return (
         <>
             <nav className='w-full h-20 sticky top-0 z-50'>
-                <div className="bg-white bg-opacity-90 px-10">
+                <div className="bg-white bg-opacity-90 px-5 md:px-10">
                     <div className={`flex items-center justify-between py-7 ${border}`}>
                         <div className="flex items-center gap-16">
                             <a href="/" className="font-bold text-xl md:text-3xl">ynrrizki</a>
@@ -54,7 +85,7 @@ export default function Navbar() {
                                 <div className="flex items-center gap-5">
                                     <a href="/" className="text-xl font-semibold text-gray-500 py-1 px-3 rounded-lg flex items-center hover:bg-gray-100">Home</a>
                                     <a href="/about" className="text-xl font-semibold text-gray-500 py-1 px-3 rounded-lg flex items-center hover:bg-gray-100">About</a>
-                                    <a href="/portofolio" className="text-xl font-semibold text-gray-500 py-1 px-3 rounded-lg flex items-center hover:bg-gray-100">Portofolio</a>
+                                    <a href="/portfolio" className="text-xl font-semibold text-gray-500 py-1 px-3 rounded-lg flex items-center hover:bg-gray-100">Portfolio</a>
                                 </div>
                             </div>
                         </div>
@@ -68,22 +99,26 @@ export default function Navbar() {
                                 </svg>
                             </button>
                         </div>
-                        {/* <ul className="xl:flex hidden">
-                        <NavItem href="/">Home</NavItem>
-                        <NavItem href="/about">About</NavItem>
-                        <NavItem href="/portfolio">Portfolio</NavItem>
-                        <NavItem href="/contact">Contact</NavItem>
-                    </ul> */}
                     </div>
                 </div>
-                <NavMobile isOpen={isOpen}>
-                    <ul>
-                        <NavItem href="/">Home</NavItem>
-                        <NavItem href="/about">About</NavItem>
-                        <NavItem href="/portofolio">Portofolio</NavItem>
-                        <NavItem href="/">Contact</NavItem>
-                    </ul>
-                </NavMobile>
+                <Transition
+                    show={isOpen}
+                    enter="transition-opacity ease-linear duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="transition-opacity ease-linear duration-300"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                >
+                    <NavMobile isOpen={isOpen}>
+                        <ul>
+                            <NavItem href="/">Home</NavItem>
+                            <NavItem href="/about">About</NavItem>
+                            <NavItem href="/portfolio">Portfolio</NavItem>
+                            {/* <NavItem href="/">Contact</NavItem> */}
+                        </ul>
+                    </NavMobile>
+                </Transition>
             </nav>
             <Transition appear show={isOpenDialog} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -118,19 +153,19 @@ export default function Navbar() {
                                         My Contact
                                     </Dialog.Title>
                                     <div className="my-7 flex gap-3 items-center justify-center">
-                                        <Link href={""}>
+                                        <Link href={"https://github.com/ynrrizki"} target="_blank">
                                             <div className="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex justify-center items-center">
                                                 <BiLogoGithub size={50} />
                                                 {/* <div className="hidden aspect-w-1 aspect-h-1  bg-[length:100%] dark:block">
                                                 </div> */}
                                             </div>
                                         </Link>
-                                        <Link href={""}>
+                                        <Link href={"https://linkedin.com/in/ynrrizki"} target="_blank">
                                             <div className="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex justify-center items-center">
                                                 <BiLogoLinkedin size={50} />
                                             </div>
                                         </Link>
-                                        <Link href={""}>
+                                        <Link href={"https://wa.link/d3tx4k"} target="_blank">
                                             <div className="w-16 h-16 p-[0.1875rem] rounded-full ring-1 ring-slate-900/10 shadow overflow-hidden flex justify-center items-center">
                                                 <BiLogoWhatsapp size={50} />
                                             </div>
@@ -152,6 +187,37 @@ export default function Navbar() {
                     </div>
                 </Dialog>
             </Transition>
+            <Menu as="div" className="fixed bottom-3 right-4 md:hidden z-50">
+                <Transition
+                    as={Fragment}
+                    enter="transition-opacity ease-linear duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="transition-opacity ease-linear duration-300"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0">
+                    <Menu.Items>
+                        {/* please implement semi circle  */}
+                        {menus.map((menu, index) => (
+                            <Menu.Item key={index}>
+                                {({ active }) => (
+                                    <a href={menu.link}
+                                        className={`flex h-12 w-12 items-center justify-center rounded-full border-2 bg-white ${active
+                                            ? 'border-orange-300/70'
+                                            : 'hover:border-orange-300/70'
+                                            }`}
+                                    >
+                                        <menu.icon className="h-8 w-8 text-black" />
+                                    </a>
+                                )}
+                            </Menu.Item>
+                        ))}
+                    </Menu.Items>
+                </Transition>
+                <Menu.Button className="flex h-12 w-12 items-center justify-center rounded-full bg-black/70 hover:bg-yellow-400 shadow-orange-200 shadow-sm">
+                    <BiPaperPlane size={24} className=" text-white" />
+                </Menu.Button>
+            </Menu>
         </>
     )
 }

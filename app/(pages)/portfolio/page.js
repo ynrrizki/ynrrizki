@@ -5,7 +5,7 @@ import { axiosInstance } from "@/app/lib/axios";
 
 export const Header = (props) => {
   return <div className="flex flex-col md:flex-row items-center justify-between py-5 md:py-24">
-    <div className="pb-12 md:pb-20">
+    <div className="pb-12 md:pb-0">
       <h1 className="text-3xl md:text-7xl font-black text-[#050505]">
         {props.title} ⚒️. <br className="block" />{" "}
       </h1>
@@ -29,26 +29,26 @@ export const Header = (props) => {
   </div>
 }
 
-export default function Portofolio() {
-  const [portofolios, setPortofolios] = useState([]);
+export default function Portfolios() {
+  const [portfolios, setPortfolios] = useState([]);
 
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const fetchPortofolios = async () => {
+  const fetchPortfolios = async () => {
     try {
       const response = await axiosInstance.get("/portofolio");
-      setPortofolios(response.data);
+      setPortfolios(response.data);
     } catch (error) {
       console.log(error)
     }
   };
 
   useEffect(() => {
-    fetchPortofolios();
+    fetchPortfolios();
   }, []);
 
-  const renderPortofolio = () => {
-    return portofolios.map(portofolio => {
+  const renderPortfolio = () => {
+    return portfolios.map(portofolio => {
       if (selectedCategory == 'all' || portofolio.category === selectedCategory)
         return CardPorto({
           name: portofolio.name,
@@ -66,7 +66,7 @@ export default function Portofolio() {
   return (
     <main className="container mx-auto">
       <div className="p-5 md:p-24">
-        <Header title="Portofolio"
+        <Header title="Portfolio"
           description="Beberapa pekerjaan yang sudah saya kerjakan dalam setahun terakhir."
           filter={
             (<select
@@ -88,7 +88,7 @@ export default function Portofolio() {
             data-aos="fade-up"
           >
             <Suspense fallback={<p>Loading feed...</p>}>
-              {renderPortofolio()}
+              {renderPortfolio()}
             </Suspense>
           </div>
         </div>

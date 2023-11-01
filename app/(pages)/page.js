@@ -28,7 +28,7 @@ export default function Home() {
               Hello, Aku Yanuar 👋 <br className="block" />{" "}<span className="underline" ref={el}>{" "}</span>
             </h1>
             <p className='text-sm md:text-4xl mt-10 text-gray-600'>
-              Menampilkan keterampilan teknis yang mengesankan dalam pengembangan web dan mobile, mengubah potensi pribadi menjadi solusi digital yang dapat bermanfaat.
+              Memiliki keterampilan teknis yang kompeten dan mengesankan dalam pengembangan web dan mobile, mengubah potensi pribadi menjadi solusi digital yang dapat bermanfaat.
             </p>
           </div>
           {/* Image */}
