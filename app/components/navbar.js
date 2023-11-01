@@ -1,3 +1,4 @@
+'use client'
 import { Fragment, useState, useEffect, useCallback } from "react";
 import NavItem from "./NavItem.js";
 import NavMobile from "./NavMobile.js";
@@ -6,7 +7,7 @@ import { Menu, Dialog, Transition } from "@headlessui/react";
 import Link from "next/link.js";
 import { BiLogoGithub, BiLogoLinkedin, BiLogoWhatsapp, BiPaperPlane } from 'react-icons/bi';
 
-export default function Navbar() {
+const Navbar = () => {
     const menus = [
         { name: 'Whatsapp', icon: BiLogoWhatsapp, link: 'https://wa.link/d3tx4k' },
         { name: 'Linkedin', icon: BiLogoLinkedin, link: 'https://linkedin.com/in/ynrrizki' },
@@ -195,3 +196,5 @@ export default function Navbar() {
         </>
     )
 }
+
+export default Navbar;

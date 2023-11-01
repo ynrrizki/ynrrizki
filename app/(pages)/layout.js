@@ -1,5 +1,5 @@
 // 'use client'
-// import Navbar from '@/app/components/Navbar.js';
+import Navbar from '@/app/components/Navbar.js';
 import '../globals.css';
 import NextTopLoader from 'nextjs-toploader';
 
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
           color='#050505'
           showSpinner={false}
         />
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
       </body>
     </html>
