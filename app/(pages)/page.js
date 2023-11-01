@@ -27,7 +27,7 @@ export default function Home() {
             <h1 className='text-3xl md:text-7xl text-start md:text-start font-black text-[#050505]'>
               Hello, Aku Yanuar 👋 <br className="block" />{" "}<span className="underline" ref={el}>{" "}</span>
             </h1>
-            <p className='text-sm md:text-4xl mt-10 text-gray-600'>
+            <p className='text-sm md:text-4xl mt-10 text-[#050505]'>
               Memiliki keterampilan teknis yang kompeten dan mengesankan dalam pengembangan web dan mobile, mengubah potensi pribadi menjadi solusi digital yang dapat bermanfaat.
             </p>
           </div>

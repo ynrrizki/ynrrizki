@@ -7,6 +7,9 @@ import { Menu, Dialog, Transition } from "@headlessui/react";
 import Link from "next/link.js";
 import { BiLogoGithub, BiLogoLinkedin, BiLogoWhatsapp, BiPaperPlane } from 'react-icons/bi';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default function ThemeLayout({ children }) {
     const menus = [
         { name: 'Whatsapp', icon: BiLogoWhatsapp, link: 'https://wa.link/d3tx4k' },
@@ -43,6 +46,10 @@ export default function ThemeLayout({ children }) {
     useEffect(() => {
         setY(window.scrollY);
         window.addEventListener("scroll", handleNavigation);
+        AOS.init({
+            duration: 800,
+            once: false,
+        });
 
         return () => {
             window.removeEventListener("scroll", handleNavigation);
