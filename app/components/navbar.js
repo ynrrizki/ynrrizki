@@ -6,7 +6,7 @@ import { Menu, Dialog, Transition } from "@headlessui/react";
 import Link from "next/link.js";
 import { BiLogoGithub, BiLogoLinkedin, BiLogoWhatsapp, BiPaperPlane } from 'react-icons/bi';
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
     const menus = [
         { name: 'Whatsapp', icon: BiLogoWhatsapp, link: 'https://wa.link/d3tx4k' },
         { name: 'Linkedin', icon: BiLogoLinkedin, link: 'https://linkedin.com/in/ynrrizki' },
@@ -192,6 +192,7 @@ const Navbar = () => {
                     <BiPaperPlane size={24} className=" text-white" />
                 </Menu.Button>
             </Menu>
+            {children}
         </>
     )
 }

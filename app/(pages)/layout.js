@@ -1,5 +1,5 @@
 // 'use client'
-import ThemeLayout from '../components/ThemeLayout';
+import Navbar from '../components/Navbar';
 import '../globals.css';
 import NextTopLoader from 'nextjs-toploader';
 
@@ -16,9 +16,9 @@ export default function RootLayout({ children }) {
           color='#050505'
           showSpinner={false}
         />
-        <ThemeLayout>
+        <Navbar>
           {children}
-        </ThemeLayout>
+        </Navbar>
       </body>
     </html>
   )
